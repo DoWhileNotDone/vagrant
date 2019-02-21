@@ -94,6 +94,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       php-mbstring
       php-pgsql
       php-pdo
+      php-gd
+      php-intl
+      php-xsl
       libapache2-mod-php
    )
 
