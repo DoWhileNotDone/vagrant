@@ -140,6 +140,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell", name: "configure postgres", inline: <<-SHELL
     sudo -u postgres psql -c "CREATE USER vagrant WITH SUPERUSER CREATEDB ENCRYPTED PASSWORD 'vagrant'"
+    sudo -u postgres createdb vagrant
     # Make sure Postgres also runs after vagrant reload
     systemctl enable postgresql
   SHELL
