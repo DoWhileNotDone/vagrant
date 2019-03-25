@@ -1,3 +1,15 @@
+# Fix permissions after you run commands on both hosts and guest machine
+if !Vagrant::Util::Platform.windows?
+  system("
+      if [ #{ARGV[0]} = 'up' ]; then
+          echo 'Setting group write permissions for ./var/*'
+          chmod 775 ./*/var
+          chmod 775 ./*/var/*
+          chmod 664 ./*/var/*/*
+      fi
+  ")
+end
+
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
